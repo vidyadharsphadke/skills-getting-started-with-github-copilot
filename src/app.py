@@ -47,6 +47,21 @@ class Activity:
         self.participants.append(normalized_email)
         return normalized_email
 
+    def unregister(self, email: str) -> str:
+        normalized_email = email.strip()
+
+        if not normalized_email:
+            raise ValueError("Email is required")
+
+        if not self.has_participant(normalized_email):
+            raise ValueError(f"{normalized_email} is not signed up")
+
+        self.participants = [
+            existing for existing in self.participants
+            if existing.lower() != normalized_email.lower()
+        ]
+        return normalized_email
+
     def to_dict(self):
         return {
             "description": self.description,
@@ -156,3 +171,19 @@ def signup_for_activity(activity_name: str, email: str):
         raise HTTPException(status_code=400, detail=str(exc)) from exc
 
     return {"message": f"Signed up {registered_email} for {activity_name}"}
+
+
+@app.delete("/activities/{activity_name}/participants/{email}")
+def unregister_participant(activity_name: str, email: str):
+    """Remove a participant from an activity."""
+    if activity_name not in activities:
+        raise HTTPException(status_code=404, detail="Activity not found")
+
+    activity = activities[activity_name]
+
+    try:
+        removed_email = activity.unregister(email)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    return {"message": f"Removed {removed_email} from {activity_name}"}
