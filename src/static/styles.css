@@ -59,19 +59,109 @@ section h3 {
 
 .activity-card {
   margin-bottom: 15px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  padding: 18px 16px;
+  border: 1px solid #dfe3f0;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+  box-shadow: 0 6px 18px rgba(26, 35, 126, 0.08);
 }
 
 .activity-card h4 {
   margin-bottom: 10px;
-  color: #0066cc;
+  color: #1a237e;
+  font-size: 1.3rem;
 }
 
 .activity-card p {
   margin-bottom: 8px;
+  color: #444;
+}
+
+.activity-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 10px;
+}
+
+.availability-badge,
+.participant-count {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.availability-badge {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+}
+
+.participant-count {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.participants-section {
+  margin-top: 14px;
+  border-top: 1px solid #e4e7ee;
+  padding-top: 12px;
+}
+
+.participants-section h5 {
+  margin-bottom: 8px;
+  color: #1a237e;
+  font-size: 0.95rem;
+}
+
+.participants-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.participant-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 6px 0;
+  padding: 8px 10px;
+  background: #f3f6ff;
+  border: 1px solid #dfe6ff;
+  border-radius: 8px;
+  line-height: 1.5;
+}
+
+.participant-item.empty {
+  justify-content: flex-start;
+  font-style: italic;
+  color: #666;
+  background: #fafafa;
+  border-style: dashed;
+}
+
+.delete-participant-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.delete-participant-button:hover {
+  background: #fecaca;
+  transform: scale(1.05);
 }
 
 .form-group {
